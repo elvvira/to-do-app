@@ -8,6 +8,9 @@ const tasks = document.getElementById('tasks');
 const buttonClear = document.getElementById('button-clear');
 const itemsNumber = document.getElementById('items-number');
 const information = document.getElementById('information');
+const buttonsInformation = document.getElementById('buttons-information');
+
+let inputArray;
 
 const createTask = value => {
   const timeStamp = Date.now();
@@ -65,4 +68,8 @@ tasks.addEventListener('click', e => {
   if (e.target.classList.contains('task__span')) {
     e.target.parentElement.remove();
   }
+});
+
+buttonsInformation.addEventListener('click', e => {
+  console.dir(e.target);
 });
