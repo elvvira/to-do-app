@@ -5,6 +5,9 @@ import '../scss/styles.scss';
 const input = document.getElementById('input');
 const form = document.getElementById('form');
 const tasks = document.getElementById('tasks');
+const buttonClear = document.getElementById('button-clear');
+const itemsNumber = document.getElementById('items-number');
+const information = document.getElementById('information');
 
 const createTask = value => {
   const timeStamp = Date.now();
@@ -30,6 +33,17 @@ const createTask = value => {
   taskElement.append(spanLabel);
 
   tasks.append(fragment);
+  printItems();
+};
+const printItems = () => {
+  console.log(tasks.children.length);
+  itemsNumber.textContent = tasks.children.length + ' ';
+};
+
+const clearElements = value => {
+  console.dir(value.parentElement.parentElement.nextElementSibling.children);
+
+  value.parentElement.parentElement.nextElementSibling.children.remove();
 };
 
 form.addEventListener('submit', e => {
@@ -37,13 +51,17 @@ form.addEventListener('submit', e => {
 });
 
 input.addEventListener('change', e => {
-  console.dir(e.target.value);
   createTask(e.target.value);
   input.value = ' ';
 });
 
+buttonClear.addEventListener('click', e => {
+  // console.dir(e.target);
+  clearElements(e.target);
+  // console.dir(tasks.children);
+});
+
 tasks.addEventListener('click', e => {
-  console.dir(e.target);
   if (e.target.classList.contains('task__span')) {
     e.target.parentElement.remove();
   }
