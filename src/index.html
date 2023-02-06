@@ -5,11 +5,50 @@
     <!-- PON UN FAVICON!!! -->
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
     <!-- CAMBIA EL TITLE!!! -->
-    <title>Vite Template</title>
+    <title>To do list</title>
   </head>
   <body>
-    <img src="assets/images/anubis.jpg" width="500px" alt="anubis" />
+    <header class="header"></header>
+
+    <main class="main">
+      <div class="main-header">
+        <h1 class="main-header__title">TO DO</h1>
+        <img class="main-header__icon" src="assets/images/icon-sun.svg" alt="" />
+      </div>
+
+      <form id="form" class="form" action="">
+        <input id="input" class="input" type="text" />
+      </form>
+      <!-- 
+  task-container
+  tasks
+  task__item
+  task__items
+ -->
+      <div id="tasks" class="tasks">
+        <!-- <div class="task">
+          <input class="task__item" type="checkbox" name="" id="" />
+          <label for=""> jajajaj</label>
+          <p class="task__span">x</p>
+        </div> -->
+
+        <div>
+          <div><span></span>items left</div>
+          <div>
+            <button>All</button>
+            <button>Active</button>
+            <button>Completed</button>
+          </div>
+          <div>
+            <button>Clear Completed</button>
+          </div>
+        </div>
+      </div>
+    </main>
     <script type="module" src="./js/index.js"></script>
   </body>
 </html>
