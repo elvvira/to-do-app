@@ -4,10 +4,11 @@ const input = document.getElementById('input');
 const form = document.getElementById('form');
 const tasks = document.getElementById('tasks');
 const buttonsInformation = document.getElementById('buttons-information');
+const buttonClear = document.getElementById('button-clear');
+const itemsNumber = document.getElementById('items-number');
 
 let allTasks = [];
-let completedTasks = [];
-let activeTasks = [];
+let itemsLeft = 0;
 
 const createObject = value => {
   const timeStamp = Date.now();
@@ -22,7 +23,6 @@ const createObject = value => {
 };
 
 const completeTask = id => {
-  //   console.log(id);
   allTasks = allTasks.map(task => {
     if (task.id === id) {
       task.checked = !task.checked;
@@ -33,10 +33,31 @@ const completeTask = id => {
 };
 
 const filterTaskChecked = () => {
-  const completedTasks = allTasks.filter(task => {
+  const completedTasksChecked = allTasks.filter(task => {
     return task.checked;
   });
-  createTasks(completedTasks);
+
+  createTasks(completedTasksChecked);
+};
+
+const filterTaskActive = () => {
+  const activeTasks = allTasks.filter(task => {
+    return !task.checked;
+  });
+  createTasks(activeTasks);
+};
+const filterTaskAll = () => {
+  const activeTasks = allTasks.filter(task => {
+    return task;
+  });
+  createTasks(activeTasks);
+};
+const clearTask = () => {
+  const completedTasksChecked = allTasks.filter(task => {
+    return !task.checked;
+  });
+  allTasks = completedTasksChecked;
+  createTasks(allTasks);
 };
 
 const createTasks = arrayTasks => {
@@ -67,30 +88,54 @@ const createTasks = arrayTasks => {
 
   tasks.innerHTML = '';
   tasks.append(fragment);
+  printNumber();
 };
-
+const removeTask = id => {
+  allTasks = allTasks.filter(task => {
+    return task.id !== id;
+  });
+  createTasks(allTasks);
+};
+const printNumber = () => {
+  itemsLeft = allTasks.filter(task => !task.checked).length;
+  itemsNumber.textContent = itemsLeft + ' ';
+};
 tasks.addEventListener('click', e => {
   if (e.target.classList.contains('task__span')) {
     e.target.parentElement.remove();
   }
-
   completeTask(Number(e.target.id));
-  //   console.dir(e.target);
+});
+
+buttonClear.addEventListener('click', e => {
+  clearTask();
 });
 
 buttonsInformation.addEventListener('click', e => {
-  //   console.dir(e.target);
+  console.dir(e.target);
 
   [...buttonsInformation.children].forEach(button => {
     button.classList.remove('information__button--active');
   });
   e.target.classList.add('information__button--active');
 
-  filterTaskChecked();
+  if (e.target.textContent === 'Completed') {
+    filterTaskChecked();
+  } else if (e.target.textContent === 'Active') {
+    filterTaskActive();
+  } else if (e.target.textContent === 'All') {
+    filterTaskAll();
+  }
 });
 
 form.addEventListener('submit', e => {
   e.preventDefault();
   createObject(e.target.task.value);
   e.target.task.value = '';
+});
+
+tasks.addEventListener('click', e => {
+  if (e.target.classList.contains('task__span')) {
+  }
+  removeTask(Number(e.target.previousElementSibling.htmlFor));
 });
