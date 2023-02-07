@@ -43,11 +43,11 @@ const printItems = () => {
   itemsNumber.textContent = tasks.children.length + ' ';
 };
 
-const clearElements = value => {
-  console.dir(value.parentElement.parentElement.nextElementSibling.children);
-
-  value.parentElement.parentElement.nextElementSibling.children.remove();
-};
+// const clearElements = value => {
+//   console.dir(value.parentElement.parentElement.nextElementSibling.children);
+//   console.log([...tasks.children]);
+//   [...tasks.children].remove();
+// };
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -60,8 +60,8 @@ input.addEventListener('change', e => {
 
 buttonClear.addEventListener('click', e => {
   // console.dir(e.target);
-  clearElements(e.target);
-  // console.dir(tasks.children);
+  // clearElements(e.target);
+  [...tasks.children].remove();
 });
 
 tasks.addEventListener('click', e => {
@@ -72,4 +72,9 @@ tasks.addEventListener('click', e => {
 
 buttonsInformation.addEventListener('click', e => {
   console.dir(e.target);
+
+  [...buttonsInformation.children].forEach(button => {
+    button.classList.remove('information__button--active');
+  });
+  e.target.classList.add('information__button--active');
 });

@@ -13,6 +13,15 @@
 
     &__button{
         background-color: transparent;
+        color:  rgb(156, 156, 156);
+        border: transparent;
+        padding: 1rem;
+    }
+    &__button--active{
+        color: var(--white);
+    }
+    &__clear{
+        background-color: transparent;
         color: var(--white);
         border: transparent;
         padding: 1rem;
