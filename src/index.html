@@ -7,10 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
     <!-- CAMBIA EL TITLE!!! -->
     <title>To do list</title>
   </head>
@@ -20,21 +17,15 @@
     <main class="main">
       <div class="main-header">
         <h1 class="main-header__title">TO DO</h1>
-        <img
-          class="main-header__icon"
-          src="assets/images/icon-sun.svg"
-          alt=""
-        />
+        <img class="main-header__icon" src="assets/images/icon-sun.svg" alt="" />
       </div>
 
       <form id="form" class="form" action="">
-        <input id="input" class="input" type="text" />
+        <input id="input" class="input" type="text" name="task" />
       </form>
 
       <div id="information" class="information">
-        <div id="information-item">
-          <span id="items-number"></span>items left
-        </div>
+        <div id="information-item"><span id="items-number"></span>items left</div>
 
         <div id="buttons-information">
           <button class="information__button">All</button>
@@ -43,13 +34,15 @@
         </div>
 
         <div>
-          <button id="button-clear" class="information__clear">
-            Clear Completed
-          </button>
+          <button id="button-clear" class="information__clear">Clear Completed</button>
         </div>
       </div>
 
-      <div id="tasks" class="tasks"></div>
+      <div id="tasks" class="tasks">
+        <!-- <div>
+
+        </div> -->
+      </div>
     </main>
     <script type="module" src="./js/index.js"></script>
   </body>
